@@ -1,0 +1,6 @@
+node_modules/
+animations/node_modules/
+renders/*.mp4
+renders/stills/
+*.log
+.DS_Store

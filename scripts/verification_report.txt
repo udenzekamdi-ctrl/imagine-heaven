@@ -1,0 +1,34 @@
+OK   p00_intro  source words 107, spoken words 112
+OK   p01  source words 130, spoken words 134
+OK   p02  source words 132, spoken words 137
+OK   p03  source words 143, spoken words 151
+OK   p04  source words 131, spoken words 137
+OK   p05  source words 117, spoken words 122
+OK   p06  source words 118, spoken words 124
+OK   p07  source words 124, spoken words 129
+OK   p08  source words 118, spoken words 124
+OK   p09  source words 104, spoken words 108
+OK   p10  source words 101, spoken words 108
+OK   p11  source words 112, spoken words 116
+OK   p12  source words 120, spoken words 123
+OK   p13  source words 102, spoken words 106
+OK   p14  source words 97, spoken words 101
+OK   p15  source words 103, spoken words 108
+OK   p16  source words 97, spoken words 101
+OK   p17  source words 100, spoken words 106
+OK   p18  source words 91, spoken words 96
+OK   p19  source words 93, spoken words 98
+OK   p20  source words 92, spoken words 96
+OK   p21  source words 96, spoken words 100
+OK   p22  source words 90, spoken words 96
+OK   p23  source words 102, spoken words 109
+OK   p24  source words 104, spoken words 108
+OK   p25  source words 84, spoken words 89
+OK   p26  source words 98, spoken words 103
+OK   p27  source words 98, spoken words 102
+OK   p28  source words 101, spoken words 104
+OK   p29  source words 100, spoken words 108
+OK   p30  source words 209, spoken words 213
+Prayers found: 30 of 30; intro: yes
+Total narration characters: 21663
+RESULT: complete — nothing missing.
