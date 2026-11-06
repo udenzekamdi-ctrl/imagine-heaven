@@ -1,8 +1,8 @@
 {
-  "narrator": "Nathaniel C – Calm Medical Support Agent",
-  "voice_id": "eIYyt1GDV2CYz5Ccyam2",
+  "narrator": "Nathaniel C - Suspense, British calm",
+  "voice_id": "AeRdCCKzvd23BpJoofzx",
   "model_id": "eleven_multilingual_v2",
   "settings": "ElevenLabs defaults for this voice (unchanged across every segment)",
-  "note": "Chosen by the user on 2026-11-05, replacing 'Nathaniel C. – Deep Rich Mature British voice' (7S3KNdLDL7aRgBVRQb1z), used only for the first voice test.",
+  "note": "Chosen by the user on 2026-11-06 after auditions (renders/voice_auditions). Replaces 'Nathaniel C – Calm Medical Support Agent' (eIYyt1GDV2CYz5Ccyam2), which the user rejected. Of two takes per segment, the one closest to the voice's natural pace is kept.",
   "segment_gap_seconds": 4.5
 }
