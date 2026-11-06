@@ -7,6 +7,7 @@ export type Segment = { id: string; kind: string; environment: string; text: str
 export type Project = {
   id: string; title: string; segments: string[] | 'all'; music: string | null;
   leadInSeconds: number; gapSeconds: number; outroSeconds: number; showTitleCard: boolean;
+  visuals?: 'footage' | 'shader'; // background: Pexels footage + atmosphere (default) or the raymarched shader
 };
 export type PlacedSegment = Segment & { start: number; duration: number; src: string };
 export type PlacedOverlay = Overlay & { start: number; duration: number };

@@ -1,0 +1,722 @@
+{
+ "_doc": "Footage plan: which Pexels clips play under each narration segment (chosen by meaning, not link order). from = source start (s); weight = share of the segment window. Proxies live in assets/footage/<clip>.mp4 (gitignored; regenerate from footage_manifest.csv).",
+ "crossfadeSeconds": 7,
+ "preferredRate": 0.82,
+ "clips": {
+  "A01": {
+   "pexelsId": 17929832,
+   "title": "Sunrise above clouds, golden",
+   "page": "https://www.pexels.com/video/the-sun-rising-over-the-clouds-from-above-17929832/",
+   "file": "https://videos.pexels.com/video-files/17929832/17929832-uhd_3840_2160_30fps.mp4",
+   "fps": 29.97,
+   "duration": 21.14,
+   "rateMin": 0.62,
+   "grade": {}
+  },
+  "A02": {
+   "pexelsId": 31985994,
+   "title": "Aerial sunrise over clouds",
+   "page": "https://www.pexels.com/video/stunning-aerial-sunrise-over-clouds-31985994/",
+   "file": "https://videos.pexels.com/video-files/31985994/13630847_3840_2160_60fps.mp4",
+   "fps": 60.0,
+   "duration": 30.033,
+   "rateMin": 0.5,
+   "grade": {}
+  },
+  "A03": {
+   "pexelsId": 33673111,
+   "title": "Above clouds at sunrise",
+   "page": "https://www.pexels.com/video/stunning-aerial-view-of-sunrise-above-clouds-33673111/",
+   "file": "https://videos.pexels.com/video-files/33673111/14306059_3840_2160_30fps.mp4",
+   "fps": 29.97,
+   "duration": 44.711,
+   "rateMin": 0.62,
+   "grade": {}
+  },
+  "A04": {
+   "pexelsId": 29775809,
+   "title": "Moving aerial above clouds",
+   "page": "https://www.pexels.com/video/stunning-aerial-view-over-clouds-at-sunrise-29775809/",
+   "file": "https://videos.pexels.com/video-files/29775809/12794717_3840_2160_60fps.mp4",
+   "fps": 60.0,
+   "duration": 9.383,
+   "rateMin": 0.5,
+   "grade": {}
+  },
+  "B01": {
+   "pexelsId": 37410310,
+   "title": "Marble columns in a grand historic building",
+   "page": "https://www.pexels.com/video/historic-building-interior-with-marble-columns-37410310/",
+   "file": "https://videos.pexels.com/video-files/37410310/15844345_1920_1080_24fps.mp4",
+   "fps": 23.976,
+   "duration": 15.515,
+   "rateMin": 0.68,
+   "grade": {
+    "warmth": 0.38,
+    "sat": 0.62,
+    "bright": 1.06,
+    "contrast": 0.96
+   }
+  },
+  "B02": {
+   "pexelsId": 37410305,
+   "title": "Ornate marble grand hall",
+   "page": "https://www.pexels.com/video/ornate-grand-hall-with-marbled-architecture-37410305/",
+   "file": "https://videos.pexels.com/video-files/37410305/15844449_1920_1080_24fps.mp4",
+   "fps": 23.976,
+   "duration": 26.026,
+   "rateMin": 0.68,
+   "grade": {
+    "warmth": 0.38,
+    "sat": 0.62,
+    "bright": 1.06,
+    "contrast": 0.96
+   }
+  },
+  "B03": {
+   "pexelsId": 7566242,
+   "title": "Sunlit church windows and arches",
+   "page": "https://www.pexels.com/video/sunrays-passing-through-church-windows-7566242/",
+   "file": "https://videos.pexels.com/video-files/7566242/7566242-uhd_4096_2160_25fps.mp4",
+   "fps": 25.0,
+   "duration": 12.92,
+   "rateMin": 0.68,
+   "grade": {
+    "warmth": 0.04,
+    "sat": 1.05,
+    "bright": 1.02
+   },
+   "sourceCorrection": "baked into proxy by fetch_footage.sh (desaturate + warm; source is strongly blue)"
+  },
+  "B04": {
+   "pexelsId": 7568880,
+   "title": "Sunlight through church windows",
+   "page": "https://www.pexels.com/video/sunlight-through-church-windows-7568880/",
+   "file": "https://videos.pexels.com/video-files/7568880/7568880-uhd_4096_2160_25fps.mp4",
+   "fps": 25.0,
+   "duration": 9.32,
+   "rateMin": 0.68,
+   "grade": {
+    "warmth": 0.26,
+    "sat": 1.2,
+    "bright": 1.02
+   }
+  },
+  "B05": {
+   "pexelsId": 32954463,
+   "title": "Ornate cathedral with sunbeams",
+   "page": "https://www.pexels.com/video/stunning-sunlit-interior-of-ornate-cathedral-32954463/",
+   "file": "https://videos.pexels.com/video-files/32954463/14044777_3840_2160_30fps.mp4",
+   "fps": 29.97,
+   "duration": 7.307,
+   "rateMin": 0.62,
+   "grade": {}
+  },
+  "C01": {
+   "pexelsId": 5580673,
+   "title": "Waterfall / mountain stream, slow motion",
+   "page": "https://www.pexels.com/video/a-cascade-of-waterfall-in-slow-motion-5580673/",
+   "file": "https://videos.pexels.com/video-files/5580673/5580673-hd_1920_1080_30fps.mp4",
+   "fps": 30.0,
+   "duration": 173.29,
+   "rateMin": 0.62,
+   "grade": {
+    "warmth": 0.2,
+    "sat": 0.92
+   }
+  },
+  "C02": {
+   "pexelsId": 9620804,
+   "title": "Gentle waterfall in forest, slow motion",
+   "page": "https://www.pexels.com/video/slow-motion-footage-of-waterfall-9620804/",
+   "file": "https://videos.pexels.com/video-files/9620804/9620804-hd_1920_1080_30fps.mp4",
+   "fps": 29.97,
+   "duration": 166.037,
+   "rateMin": 0.62,
+   "grade": {}
+  },
+  "C03": {
+   "pexelsId": 33105917,
+   "title": "Peaceful forest stream and small waterfall",
+   "page": "https://www.pexels.com/video/peaceful-forest-stream-with-waterfall-33105917/",
+   "file": "https://videos.pexels.com/video-files/33105917/14111572_3840_2160_30fps.mp4",
+   "fps": 30.0,
+   "duration": 60.5,
+   "rateMin": 0.62,
+   "grade": {
+    "warmth": 0.22,
+    "sat": 0.92
+   }
+  },
+  "C04": {
+   "pexelsId": 35090607,
+   "title": "Aerial forest and river",
+   "page": "https://www.pexels.com/video/aerial-view-of-scenic-forest-and-river-35090607/",
+   "file": "https://videos.pexels.com/video-files/35090607/14866021_3840_2160_30fps.mp4",
+   "fps": 29.97,
+   "duration": 56.023,
+   "rateMin": 0.62,
+   "grade": {
+    "warmth": 0.22,
+    "bright": 1.1
+   }
+  },
+  "C05": {
+   "pexelsId": 9923211,
+   "title": "White flowers moving in the breeze",
+   "page": "https://www.pexels.com/video/white-flowers-swaying-in-wind-9923211/",
+   "file": "https://videos.pexels.com/video-files/9923211/9923211-uhd_3840_2160_30fps.mp4",
+   "fps": 29.97,
+   "duration": 73.877,
+   "rateMin": 0.62,
+   "grade": {}
+  },
+  "C06": {
+   "pexelsId": 5587009,
+   "title": "Morning sun rays through misty forest",
+   "page": "https://www.pexels.com/video/morning-sun-rays-5587009/",
+   "file": "https://videos.pexels.com/video-files/5587009/5587009-hd_1920_1080_30fps.mp4",
+   "fps": 29.97,
+   "duration": 48.02,
+   "rateMin": 0.62,
+   "grade": {}
+  },
+  "C07": {
+   "pexelsId": 31808046,
+   "title": "Sunbeams in misty forest (Drenthe)",
+   "page": "https://www.pexels.com/video/sunbeams-through-misty-forest-in-drenthe-31808046/",
+   "file": "https://videos.pexels.com/video-files/31808046/13551875_3840_2160_30fps.mp4",
+   "fps": 29.97,
+   "duration": 12.779,
+   "rateMin": 0.62,
+   "grade": {}
+  },
+  "D01": {
+   "pexelsId": 32171945,
+   "title": "Aerial misty valley time-lapse at dawn",
+   "page": "https://www.pexels.com/video/aerial-timelapse-of-misty-valley-at-sunrise-32171945/",
+   "file": "https://videos.pexels.com/video-files/32171945/13719197_3840_2160_30fps.mp4",
+   "fps": 29.97,
+   "duration": 45.312,
+   "rateMin": 0.62,
+   "grade": {}
+  },
+  "D02": {
+   "pexelsId": 33012790,
+   "title": "Aerial misty mountain landscape",
+   "page": "https://www.pexels.com/video/aerial-view-of-misty-mountain-landscape-33012790/",
+   "file": "https://videos.pexels.com/video-files/33012790/14076357_2560_1440_30fps.mp4",
+   "fps": 29.97,
+   "duration": 70.704,
+   "rateMin": 0.62,
+   "grade": {}
+  },
+  "D03": {
+   "pexelsId": 29876392,
+   "title": "Misty mountains at sunrise (drone)",
+   "page": "https://www.pexels.com/video/breathtaking-misty-mountain-drone-sunrise-29876392/",
+   "file": "https://videos.pexels.com/video-files/29876392/12827235_3840_2160_60fps.mp4",
+   "fps": 59.94,
+   "duration": 20.888,
+   "rateMin": 0.5,
+   "grade": {
+    "warmth": 0.28,
+    "bright": 1.04
+   }
+  },
+  "D04": {
+   "pexelsId": 28903252,
+   "title": "Misty mountain forest at sunrise",
+   "page": "https://www.pexels.com/video/aerial-view-of-misty-mountains-at-sunrise-28903252/",
+   "file": "https://videos.pexels.com/video-files/28903252/12510750_3840_2160_60fps.mp4",
+   "fps": 59.94,
+   "duration": 8.075,
+   "rateMin": 0.5,
+   "grade": {}
+  },
+  "E01": {
+   "pexelsId": 37517582,
+   "title": "Aerial sunrise over mountain cloudscape",
+   "page": "https://www.pexels.com/video/aerial-view-of-clouds-over-mountain-range-at-sunrise-37517582/",
+   "file": "https://videos.pexels.com/video-files/37517582/15895283_3840_2160_30fps.mp4",
+   "fps": 29.97,
+   "duration": 16.316,
+   "rateMin": 0.62,
+   "grade": {}
+  },
+  "E02": {
+   "pexelsId": 34420228,
+   "title": "Glowing sunrise over mountains",
+   "page": "https://www.pexels.com/video/stunning-aerial-sunrise-over-mountain-range-34420228/",
+   "file": "https://videos.pexels.com/video-files/34420228/14581444_3840_2160_60fps.mp4",
+   "fps": 59.94,
+   "duration": 22.873,
+   "rateMin": 0.5,
+   "grade": {}
+  },
+  "E03": {
+   "pexelsId": 29393034,
+   "title": "Sunrise over mist-covered mountains",
+   "page": "https://www.pexels.com/video/breathtaking-aerial-sunrise-over-misty-mountains-29393034/",
+   "file": "https://videos.pexels.com/video-files/29393034/12660702_1920_1080_60fps.mp4",
+   "fps": 59.94,
+   "duration": 10.01,
+   "rateMin": 0.5,
+   "grade": {}
+  },
+  "E04": {
+   "pexelsId": 7048579,
+   "title": "Sunrise above mountain summit, aerial",
+   "page": "https://www.pexels.com/video/aerial-footage-of-a-mountain-top-7048579/",
+   "file": "https://videos.pexels.com/video-files/7048579/7048579-uhd_4096_1974_30fps.mp4",
+   "fps": 29.97,
+   "duration": 8.02,
+   "rateMin": 0.62,
+   "grade": {}
+  }
+ },
+ "segments": {
+  "p00_intro": [
+   {
+    "clip": "A01",
+    "weight": 1,
+    "from": 0
+   },
+   {
+    "clip": "A03",
+    "weight": 1.25,
+    "from": 0
+   }
+  ],
+  "p01": [
+   {
+    "clip": "B04",
+    "weight": 0.7,
+    "from": 0
+   },
+   {
+    "clip": "B03",
+    "weight": 1,
+    "from": 0
+   },
+   {
+    "clip": "A02",
+    "weight": 2,
+    "from": 0
+   }
+  ],
+  "p02": [
+   {
+    "clip": "B05",
+    "weight": 0.5,
+    "from": 0
+   },
+   {
+    "clip": "A04",
+    "weight": 0.8,
+    "from": 0
+   },
+   {
+    "clip": "A01",
+    "weight": 1,
+    "from": 6
+   }
+  ],
+  "p03": [
+   {
+    "clip": "B02",
+    "weight": 0.7,
+    "from": 2
+   },
+   {
+    "clip": "B01",
+    "weight": 0.5,
+    "from": 1
+   },
+   {
+    "clip": "E01",
+    "weight": 1.3,
+    "from": 0
+   }
+  ],
+  "p04": [
+   {
+    "clip": "A03",
+    "weight": 1.5,
+    "from": 8
+   },
+   {
+    "clip": "E02",
+    "weight": 1,
+    "from": 0
+   }
+  ],
+  "p05": [
+   {
+    "clip": "A02",
+    "weight": 1.2,
+    "from": 12
+   },
+   {
+    "clip": "D04",
+    "weight": 0.6,
+    "from": 0
+   },
+   {
+    "clip": "C05",
+    "weight": 1,
+    "from": 0
+   }
+  ],
+  "p06": [
+   {
+    "clip": "D02",
+    "weight": 1.5,
+    "from": 0
+   },
+   {
+    "clip": "D03",
+    "weight": 1,
+    "from": 0
+   }
+  ],
+  "p07": [
+   {
+    "clip": "D01",
+    "weight": 1.2,
+    "from": 0
+   },
+   {
+    "clip": "E04",
+    "weight": 0.5,
+    "from": 0
+   },
+   {
+    "clip": "D03",
+    "weight": 0.8,
+    "from": 6
+   }
+  ],
+  "p08": [
+   {
+    "clip": "C02",
+    "weight": 1.5,
+    "from": 0
+   },
+   {
+    "clip": "C05",
+    "weight": 1,
+    "from": 20
+   }
+  ],
+  "p09": [
+   {
+    "clip": "C07",
+    "weight": 0.8,
+    "from": 0
+   },
+   {
+    "clip": "C06",
+    "weight": 1.3,
+    "from": 0
+   }
+  ],
+  "p10": [
+   {
+    "clip": "C03",
+    "weight": 1.5,
+    "from": 0
+   },
+   {
+    "clip": "C05",
+    "weight": 0.8,
+    "from": 38
+   }
+  ],
+  "p11": [
+   {
+    "clip": "C01",
+    "weight": 1.5,
+    "from": 0
+   },
+   {
+    "clip": "C02",
+    "weight": 1,
+    "from": 60
+   }
+  ],
+  "p12": [
+   {
+    "clip": "C04",
+    "weight": 1,
+    "from": 10
+   },
+   {
+    "clip": "D02",
+    "weight": 1,
+    "from": 30
+   }
+  ],
+  "p13": [
+   {
+    "clip": "C06",
+    "weight": 1.2,
+    "from": 15
+   },
+   {
+    "clip": "C05",
+    "weight": 0.8,
+    "from": 50
+   }
+  ],
+  "p14": [
+   {
+    "clip": "D03",
+    "weight": 1,
+    "from": 0
+   },
+   {
+    "clip": "A01",
+    "weight": 0.8,
+    "from": 4
+   },
+   {
+    "clip": "E03",
+    "weight": 0.6,
+    "from": 0
+   }
+  ],
+  "p15": [
+   {
+    "clip": "C05",
+    "weight": 1,
+    "from": 10
+   },
+   {
+    "clip": "C07",
+    "weight": 0.7,
+    "from": 1
+   },
+   {
+    "clip": "C03",
+    "weight": 1,
+    "from": 30
+   }
+  ],
+  "p16": [
+   {
+    "clip": "D01",
+    "weight": 1.6,
+    "from": 10
+   },
+   {
+    "clip": "E01",
+    "weight": 0.8,
+    "from": 0
+   }
+  ],
+  "p17": [
+   {
+    "clip": "C05",
+    "weight": 1,
+    "from": 0
+   },
+   {
+    "clip": "D02",
+    "weight": 1.2,
+    "from": 20
+   }
+  ],
+  "p18": [
+   {
+    "clip": "A04",
+    "weight": 0.7,
+    "from": 0
+   },
+   {
+    "clip": "A02",
+    "weight": 1.2,
+    "from": 5
+   }
+  ],
+  "p19": [
+   {
+    "clip": "C02",
+    "weight": 1.3,
+    "from": 80
+   },
+   {
+    "clip": "C06",
+    "weight": 0.8,
+    "from": 28
+   }
+  ],
+  "p20": [
+   {
+    "clip": "E03",
+    "weight": 0.7,
+    "from": 0
+   },
+   {
+    "clip": "E02",
+    "weight": 1,
+    "from": 0
+   },
+   {
+    "clip": "A01",
+    "weight": 0.8,
+    "from": 0
+   }
+  ],
+  "p21": [
+   {
+    "clip": "D04",
+    "weight": 0.5,
+    "from": 0
+   },
+   {
+    "clip": "C04",
+    "weight": 1,
+    "from": 28
+   },
+   {
+    "clip": "D03",
+    "weight": 0.8,
+    "from": 10
+   }
+  ],
+  "p22": [
+   {
+    "clip": "B02",
+    "weight": 0.6,
+    "from": 12
+   },
+   {
+    "clip": "B05",
+    "weight": 0.5,
+    "from": 0
+   },
+   {
+    "clip": "A03",
+    "weight": 1,
+    "from": 0
+   }
+  ],
+  "p23": [
+   {
+    "clip": "E04",
+    "weight": 0.6,
+    "from": 0
+   },
+   {
+    "clip": "D02",
+    "weight": 1.2,
+    "from": 40
+   }
+  ],
+  "p24": [
+   {
+    "clip": "A01",
+    "weight": 1,
+    "from": 0
+   },
+   {
+    "clip": "D01",
+    "weight": 1,
+    "from": 22
+   }
+  ],
+  "p25": [
+   {
+    "clip": "C06",
+    "weight": 1,
+    "from": 0
+   },
+   {
+    "clip": "C05",
+    "weight": 0.8,
+    "from": 30
+   }
+  ],
+  "p26": [
+   {
+    "clip": "E02",
+    "weight": 1,
+    "from": 4
+   },
+   {
+    "clip": "E03",
+    "weight": 0.6,
+    "from": 2
+   },
+   {
+    "clip": "D03",
+    "weight": 0.8,
+    "from": 4
+   }
+  ],
+  "p27": [
+   {
+    "clip": "C01",
+    "weight": 1,
+    "from": 60
+   },
+   {
+    "clip": "C04",
+    "weight": 1,
+    "from": 20
+   }
+  ],
+  "p28": [
+   {
+    "clip": "C03",
+    "weight": 1.5,
+    "from": 10
+   },
+   {
+    "clip": "C02",
+    "weight": 0.8,
+    "from": 120
+   }
+  ],
+  "p29": [
+   {
+    "clip": "E01",
+    "weight": 1,
+    "from": 0
+   },
+   {
+    "clip": "A02",
+    "weight": 1,
+    "from": 10
+   },
+   {
+    "clip": "C07",
+    "weight": 0.6,
+    "from": 0
+   }
+  ],
+  "p30": [
+   {
+    "clip": "A03",
+    "weight": 1.2,
+    "from": 0
+   },
+   {
+    "clip": "E02",
+    "weight": 0.8,
+    "from": 0
+   },
+   {
+    "clip": "A04",
+    "weight": 0.6,
+    "from": 0
+   },
+   {
+    "clip": "A01",
+    "weight": 1.2,
+    "from": 0
+   }
+  ]
+ }
+}

@@ -4,3 +4,5 @@ renders/*.mp4
 renders/stills/
 *.log
 .DS_Store
+assets/footage/
+footage_src/

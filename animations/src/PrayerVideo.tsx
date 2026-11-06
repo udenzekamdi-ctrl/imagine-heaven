@@ -1,6 +1,8 @@
 import React from 'react';
 import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig, Easing } from 'remotion';
 import { ShaderEnvironment } from './env/ShaderEnvironment';
+import { FootageEnvironment } from './footage/FootageEnvironment';
+import { Atmosphere } from './footage/Atmosphere';
 import { ScriptureOverlay, TitleCard } from './components/Typography';
 import type { Timeline } from './timeline';
 
@@ -67,7 +69,14 @@ export const PrayerVideo: React.FC<{ timeline: Timeline }> = ({ timeline: tl }) 
 
   return (
     <AbsoluteFill style={{ backgroundColor: '#000' }}>
-      <ShaderEnvironment env={env} />
+      {tl.project.visuals === 'shader' ? (
+        <ShaderEnvironment env={env} />
+      ) : (
+        <>
+          <FootageEnvironment timeline={tl} />
+          <Atmosphere />
+        </>
+      )}
 
       {tl.project.showTitleCard ? (
         <Sequence durationInFrames={titleLen}>
