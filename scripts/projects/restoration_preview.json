@@ -5,7 +5,7 @@
     "p00_intro",
     "p01"
   ],
-  "music": null,
+  "music": "whispers_in_the_rain.mp3",
   "leadInSeconds": 6,
   "gapSeconds": 4.5,
   "outroSeconds": 8,

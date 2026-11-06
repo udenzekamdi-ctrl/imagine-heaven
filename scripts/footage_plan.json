@@ -43,36 +43,6 @@
    "rateMin": 0.5,
    "grade": {}
   },
-  "B01": {
-   "pexelsId": 37410310,
-   "title": "Marble columns in a grand historic building",
-   "page": "https://www.pexels.com/video/historic-building-interior-with-marble-columns-37410310/",
-   "file": "https://videos.pexels.com/video-files/37410310/15844345_1920_1080_24fps.mp4",
-   "fps": 23.976,
-   "duration": 15.515,
-   "rateMin": 0.68,
-   "grade": {
-    "warmth": 0.38,
-    "sat": 0.62,
-    "bright": 1.06,
-    "contrast": 0.96
-   }
-  },
-  "B02": {
-   "pexelsId": 37410305,
-   "title": "Ornate marble grand hall",
-   "page": "https://www.pexels.com/video/ornate-grand-hall-with-marbled-architecture-37410305/",
-   "file": "https://videos.pexels.com/video-files/37410305/15844449_1920_1080_24fps.mp4",
-   "fps": 23.976,
-   "duration": 26.026,
-   "rateMin": 0.68,
-   "grade": {
-    "warmth": 0.38,
-    "sat": 0.62,
-    "bright": 1.06,
-    "contrast": 0.96
-   }
-  },
   "B03": {
    "pexelsId": 7566242,
    "title": "Sunlit church windows and arches",
@@ -324,19 +294,19 @@
   ],
   "p03": [
    {
-    "clip": "B02",
-    "weight": 0.7,
-    "from": 2
+    "clip": "B03",
+    "from": 3,
+    "weight": 0.6
    },
    {
-    "clip": "B01",
-    "weight": 0.5,
-    "from": 1
+    "clip": "B05",
+    "from": 0,
+    "weight": 0.5
    },
    {
     "clip": "E01",
-    "weight": 1.3,
-    "from": 0
+    "from": 0,
+    "weight": 1.3
    }
   ],
   "p04": [
@@ -587,19 +557,14 @@
   ],
   "p22": [
    {
-    "clip": "B02",
-    "weight": 0.6,
-    "from": 12
-   },
-   {
-    "clip": "B05",
-    "weight": 0.5,
-    "from": 0
-   },
-   {
     "clip": "A03",
-    "weight": 1,
-    "from": 0
+    "from": 0,
+    "weight": 1.2
+   },
+   {
+    "clip": "E04",
+    "from": 0,
+    "weight": 0.6
    }
   ],
   "p23": [

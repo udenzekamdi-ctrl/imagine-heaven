@@ -6,7 +6,7 @@ import { Atmosphere } from './footage/Atmosphere';
 import { ScriptureOverlay, TitleCard } from './components/Typography';
 import type { Timeline } from './timeline';
 
-const MUSIC_SPEECH = 0.11;   // music level under narration (≈ -19 dB)
+const MUSIC_SPEECH = 0.15;   // music level under narration (≈ -16.5 dB; music mastered to -18 LUFS)
 const MUSIC_PAUSE = 0.30;    // gentle swell between prayers
 const MUSIC_EDGES = 0.36;    // opening / closing
 const NARRATION = 1.0;
