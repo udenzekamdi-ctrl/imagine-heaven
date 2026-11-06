@@ -20,6 +20,7 @@ vec3 hash33(vec3 p3){ p3 = fract(p3 * vec3(.1031, .1030, .0973)); p3 += dot(p3, 
 float noise(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f);
   return mix(mix(hash12(i),hash12(i+vec2(1,0)),f.x), mix(hash12(i+vec2(0,1)),hash12(i+vec2(1,1)),f.x), f.y); }
 float fbm(vec2 p){ float a=.5, s=0.; for(int i=0;i<6;i++){ s+=a*noise(p); p=mat2(1.6,1.2,-1.2,1.6)*p+vec2(3.1,1.7); a*=.5; } return s; }
+float fbm5(vec2 p){ float a=.5, s=0.; for(int i=0;i<5;i++){ s+=a*noise(p); p=mat2(1.6,1.2,-1.2,1.6)*p+vec2(3.1,1.7); a*=.5; } return s; }
 float fbm3(vec2 p){ float a=.5, s=0.; for(int i=0;i<3;i++){ s+=a*noise(p); p=mat2(1.6,1.2,-1.2,1.6)*p; a*=.5; } return s; }
 
 float sdBox(vec3 p, vec3 b){ vec3 q=abs(p)-b; return length(max(q,0.))+min(max(q.x,max(q.y,q.z)),0.); }
@@ -80,6 +81,7 @@ vec2 march(vec3 ro, vec3 rd, float tmax, int steps){
     t += h.x * .85;
     if (t > tmax) break;
   }
+  if (m < -.5 && t < 40.) { vec2 h = map(ro + rd*t); if (h.x < .01 + .002*t) m = h.y; }
   return vec2(t, m);
 }
 
@@ -93,15 +95,29 @@ float softShadow(vec3 ro, vec3 rd, float k){
   }
   return clamp(res, 0., 1.);
 }
-float hardShadowCheap(vec3 ro, vec3 rd){
-  float t = .1;
-  for (int i=0; i<10; i++){
-    float h = map(ro + rd*t).x;
-    if (h < .02) return 0.;
-    t += max(h, .4);
-    if (t > 30.) break;
+// Analytic sun visibility for the light shafts. The colonnade is perfectly regular, so instead of
+// raymarching the SDF (was ~50% of the frame cost) intersect the sun ray with each row's plane
+// (x = ±CX, ±OX) and test the nearest column / arcade wall there. Soft edges = soft shafts.
+float rowOcc(vec3 p, float X, float sp, float r, float h, float hasWall){
+  float s = (X - p.x)/SUN.x;
+  if (s <= 0.) return 0.;
+  vec3 c = p + SUN*s;
+  float dx = abs(SUN.x)/length(SUN.xz);          // perpendicular distance factor in plan
+  float zc = mod(c.z + sp*.5, sp) - sp*.5;
+  float occ = smoothstep(r + .12, r - .12, abs(zc)*dx) * step(c.y, h);
+  if (hasWall > .5 && c.y > 8.2 && c.y < 13.0) {
+    float za = mod(c.z, sp) - sp*.5;
+    float hole = length(vec2(za, c.y - 8.45)) - 1.78;
+    occ = max(occ, smoothstep(-.15, .15, hole));
   }
-  return 1.;
+  return occ;
+}
+float sunVis(vec3 p){
+  float o = rowOcc(p, CX, SP, .55, 8.6, 1.);
+  o = max(o, rowOcc(p, -CX, SP, .55, 8.6, 1.));
+  o = max(o, rowOcc(p, OX, OSP, 1.2, 30.5, 0.));
+  o = max(o, rowOcc(p, -OX, OSP, 1.2, 30.5, 0.));
+  return 1. - o;
 }
 float ao(vec3 p, vec3 n){
   float o = 0., s = 1.;
@@ -144,15 +160,15 @@ vec3 sky(vec3 ro, vec3 rd){
 
 vec3 marbleAlbedo(vec3 p, float isFloor){
   vec2 uv = isFloor > .5 ? p.xz : vec2(p.y, p.x + p.z);
-  float v = fbm(uv*.35 + fbm(uv*.8)*2.2);
-  float vein = smoothstep(.02, .0, abs(v - .52))*.22 + smoothstep(.05, .0, abs(v - .38))*.10;
+  float v = fbm5(uv*.35 + fbm3(uv*.8)*2.2);
+  float vein = (smoothstep(.02, .0, abs(v - .52))*.22 + smoothstep(.05, .0, abs(v - .38))*.10) * (isFloor > .5 ? 1. : .55);
   vec3 base = vec3(.93, .91, .87);
   base -= vein*vec3(.20, .21, .25);
   base *= .97 + .05*noise(uv*6.);
   return base;
 }
 
-vec3 shade(vec3 ro, vec3 rd, vec2 hit, out vec3 pos, out vec3 nor){
+vec3 shade(vec3 ro, vec3 rd, vec2 hit, bool lite, out vec3 pos, out vec3 nor){
   pos = ro + rd*hit.x; nor = calcNormal(pos);
   vec3 alb = marbleAlbedo(pos, hit.y);
   float goldMask = 0.;
@@ -168,16 +184,17 @@ vec3 shade(vec3 ro, vec3 rd, vec2 hit, out vec3 pos, out vec3 nor){
   // gilded capitals / keystones
   if (hit.y < .5) {
     float isCap = smoothstep(7.85, 7.95, pos.y) * (1. - smoothstep(8.45, 8.55, pos.y)) * step(abs(abs(pos.x) - CX), 1.);
-    float isKey = smoothstep(10.05, 10.1, pos.y) * (1. - smoothstep(10.48, 10.52, pos.y));
-    float isFrieze = smoothstep(12.15, 12.2, pos.y) * (1. - smoothstep(12.72, 12.75, pos.y));
+    float inArc = step(abs(abs(pos.x) - CX), 1.);
+    float isKey = smoothstep(10.05, 10.1, pos.y) * (1. - smoothstep(10.48, 10.52, pos.y)) * inArc;
+    float isFrieze = smoothstep(12.15, 12.2, pos.y) * (1. - smoothstep(12.72, 12.75, pos.y)) * inArc;
     goldMask = max(isCap*.85, max(isKey*.8, isFrieze*.35));
   }
   vec3 gold = vec3(.86, .66, .34);
   alb = mix(alb, gold, goldMask);
 
-  float sh = softShadow(pos + nor*.01, SUN, 9.);
+  float sh = lite ? 1. : softShadow(pos + nor*.01, SUN, 9.);
   float dif = clamp(dot(nor, SUN), 0., 1.) * sh;
-  float occ = ao(pos, nor);
+  float occ = lite ? 1. : ao(pos, nor);
   float skyL = .5 + .5*nor.y;
   float bounce = clamp(-nor.y, 0., 1.)*.6 + clamp(dot(nor, normalize(vec3(-SUN.x, 0., -SUN.z))), 0., 1.)*.25;
   vec3 lin = sunCol()*3.1*dif;
@@ -187,7 +204,7 @@ vec3 shade(vec3 ro, vec3 rd, vec2 hit, out vec3 pos, out vec3 nor){
   // specular (gold more metallic)
   vec3 h = normalize(SUN - rd);
   float spe = pow(clamp(dot(nor, h), 0., 1.), mix(40., 90., goldMask)) * dif;
-  col += mix(vec3(.25), gold*1.8, goldMask)*spe*1.5;
+  if (!lite) col += mix(vec3(.25), gold*1.8, goldMask)*spe*1.5;
   return col;
 }
 
@@ -197,17 +214,16 @@ vec3 render(vec3 ro, vec3 rd, vec2 fragCoord){
   if (hit.y < -.5) { col = sky(ro, rd); tHit = 400.; }
   else {
     vec3 pos, nor;
-    col = shade(ro, rd, hit, pos, nor);
+    col = shade(ro, rd, hit, false, pos, nor);
     if (hit.y > .5 && pos.y > -.05) {
       // polished floor: glossy reflection
       vec3 rr = reflect(rd, nor);
-      rr = normalize(rr + (vec3(noise(pos.xz*9.), 0., noise(pos.zx*9.)) - .5)*.035);
-      vec2 rh = march(pos + nor*.02, rr, 120., int(70.*uQuality));
+            vec2 rh = march(pos + nor*.02, rr, 90., int(56.*uQuality));
       vec3 rc;
       if (rh.y < -.5) rc = sky(pos, rr);
-      else { vec3 p2, n2; rc = shade(pos + nor*.02, rr, rh, p2, n2); rc = mix(rc, vec3(1., .9, .76), 1. - exp(-rh.x*.012)); }
-      float fre = .06 + .5*pow(1. - clamp(dot(-rd, nor), 0., 1.), 5.);
-      col = mix(col, rc, fre*1.5);
+      else { vec3 p2, n2; rc = shade(pos + nor*.02, rr, rh, true, p2, n2); rc = mix(rc, vec3(1., .9, .76), 1. - exp(-rh.x*.02)); }
+      float fre = .05 + .45*pow(1. - clamp(dot(-rd, nor), 0., 1.), 5.);
+      col = mix(col, rc, fre*1.25);
     }
   }
   // atmospheric perspective
@@ -228,7 +244,7 @@ vec3 render(vec3 ro, vec3 rd, vec2 fragCoord){
     float tt = L*s*s;
     vec3 pp = ro + rd*tt;
     float dens = exp(-max(pp.y, 0.)*.07);
-    acc += hardShadowCheap(pp, SUN)*dens;
+    acc += sunVis(pp)*dens;
   }
   acc /= float(NS);
   float phase = .25 + 1.3*pow(sd, 5.) + .5*pow(sd, 30.);
@@ -280,8 +296,9 @@ void main(){
   col += vec3(1., .82, .55)*pow(sd, 14.)*.35;
 
   // grade: gentle exposure, filmic curve, warm highlights / cool-ivory shadows
-  col *= .82;
+  col *= .86;
   col = aces(col);
+  col = mix(col, col*col*(3. - 2.*col), .22);
   col = pow(col, vec3(.95, .97, 1.02));
   float lum = dot(col, vec3(.299, .587, .114));
   col = mix(col, col*vec3(1.03, 1.0, .95), smoothstep(.4, 1., lum));
